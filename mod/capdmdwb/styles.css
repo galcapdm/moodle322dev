@@ -1,0 +1,538 @@
+/* CAPDM workbook - reveals answers */
+table.qa_table td{
+	vertical-align: top;
+}
+
+span.wb_qreveal, div.wb_qreveal, span.question_result_icon {
+	font-style:italic; font-weight:bold; font-size:96%;
+/*	background:#F4EAFF;*/
+	background:#F9F4FF;
+        display: inline;
+	display: none;
+        padding:0 0.2em 0 0.2em;}
+
+.mcrq_result_icon{
+    background:#fff;
+}
+
+span.wb_qreveal, * div.wb_qreveal *{
+	font-size:100% !important;
+}
+
+
+img.wb_qreveal{
+	padding:0;margin:0;background: none;border:0;
+}
+.results_icon{
+	border:none;
+}
+
+.wb_qreveal, .wb_qhint {
+/*	background:#F4EAFF; */
+	display: none;
+	vertical-align: top;
+	font-size: 0.9em;
+}
+
+.wb_qsubmit {
+	display: block;
+	vertical-align: top;
+	font-size: 0.9em;
+}
+.wb_qreset {
+	display: block;
+	vertical-align: top;
+	font-size: 0.9em;
+}
+
+.wb_hl_1{
+	background: #FEFF64;
+	color: #000;
+	font-weight: bold;
+}
+
+.wb_hl_2{
+	background: #FF5555;
+	color: #fff;
+	font-weight: bold;
+}
+
+.wb_hl_3{
+	background: #2A2BA8;
+	color: #fff;
+	font-weight: bold;
+}
+
+.wb_hl_4{
+	background: #00CE02;
+	color: #000;
+	font-weight: bold;
+}
+
+.wb_hl_5{
+	background: #000;
+	color: #eee;
+	font-weight: bold;
+	border:1px solid #000000;
+}
+
+.wb_hl_6{
+	background: #ccc;
+	color: #000;
+	font-weight: bold;
+}
+
+ul.highlightlegend {
+	margin-left: 0;
+	padding-left: 0;
+	display: inline;
+	}
+
+ul.highlightlegend li {
+	margin-left: 0;
+	margin-bottom: 0;
+	padding: 2px 15px 5px;
+	border: 1px solid #000;
+	list-style: none;
+	display: inline;
+	}
+
+
+ul.highlightlegend{
+	display:block;
+	margin: 2em 0 0.5em 0;
+	}
+ul.highlightlegend li{
+	display: table-cell;
+	font-size: xx-small;
+	font-weight: bold;
+	padding-right: 2em;
+	list-style: none;border: none;
+}
+
+ul.highlightlegend li input{
+	display: inline;
+	border:none;
+}
+
+
+ul.flat p{
+	display: inline;
+}
+
+span.question_result_icon{
+	border: none; }
+
+select{
+	align:left;
+	border:1px solid;
+
+}
+
+
+span.question_result_ico img{
+	width:8px !important; height:8px !important;border:2px solid black;
+}
+
+.iwb-reveal{
+    display: none;
+}
+
+/*
+Reflective activities
+*/
+dwb-topic-title {
+  font-weight: bold;
+}
+
+div.dwb-reflection {
+}
+
+div.dwb-journal {
+}
+
+div.dwb-link {
+    background: url([[pix:capdmdwb|icon]]) right center no-repeat;
+    float: left;
+    padding: 0.5em 25px 0.5em 0;
+    text-align: right;
+    width:96%;
+}
+
+a.dwb-task-link:before {  /* used to link from TOT back to content task */
+    content: "\f08e";  /* fa-external-link */
+    margin-left: 7px;    margin-right: 7px;
+    font-family: "FontAwesome";
+}
+
+div.dwb-task {
+    background: url([[pix:capdmdwb|bg.reflective.activity]]) repeat-x scroll 0 100% #FFFFFF;
+    border: 1px solid #CCCCCC;
+    margin: 1em 0;
+    padding: 10px;
+}
+div.dwb-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #01447B;
+}
+textarea.dwb-textarea {
+    border: 1px solid #CCCCCC;
+    color: #5A5A5A;
+    font-size: 0.9em;
+    height: 200px;
+    line-height: 1.6em;
+    padding: 10px;
+    width: 97%;
+}
+
+.dwb-random{
+    color: #00247d;
+}
+.dwb-random:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.dwb-close {
+    display: none;
+    float: left;
+    text-decoration: underline;
+}
+.dwb-close-show {
+    display: block;
+    float: left;
+}
+.dwb-close-show:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+div.dwb-random-detail{
+    display: none;
+    float: left;
+}
+div.dwb-random-detail-waiting-show {
+    display: block;
+    background: url([[pix:capdmdwb|dwb-waiting]]) no-repeat scroll 0 0 transparent;
+    float: left;
+    padding-left: 25px;
+    width: 50%;
+}
+div.dwb-close {
+
+}
+div.dwb-button {
+    color: #00247d !important;
+    margin-right: 10px;
+    float: left;
+}
+div.dwb-button a:link, div.dwb-button a:visited {
+    text-decoration: none !important;
+}
+div.dwb-button a:hover {
+    text-decoration: underline;
+}
+div.dwb-random-detail-waiting {
+    display: none;
+    width: 50%;
+}
+div.dwb-random-detail-show{
+    background-color: #ffffff;
+    display: block;
+    border: 1px solid #c1c3c5;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    float: left;
+    width: 97%;
+    clear: both;
+}
+.dwb-random-detail-detail {
+    float: left;
+    width: 96%;
+    background-color: #ffffff;
+    padding: 0.5em;
+    margin: 0.25em 0;
+    border: 1px solid #c1c3c5;
+}
+.dwb-random-detail-records {
+    float: left;
+    width: 100%;
+}
+.dwb-detail {
+    font-size: 1em;
+    line-height: 12px;
+}
+.dwb-detail-group-title {
+    border-top: 4px solid #c1c3c5;
+    font-size: 1.4em;
+    margin-bottom: 0.5em;
+    padding-top: 5px;
+    color: #aa0000;
+}
+.dwb-detail-group-preamble {
+/*    background: url([[pix:capdmdwb|bg.block.content]]) repeat-x scroll 0 100% #ffffff; */
+    border: 1px solid #c1c3c5;
+    margin-bottom: 1em;
+    padding: 5px;
+    font-weight: bold;
+}
+.dwb-random-detail-country, .dwb-random-detail-country {
+    float: left;
+}
+
+/* DWB front tab display */
+ul.hview-boxes li i{color: #366696; margin-right: 5px}
+ul.hview-boxes li i.hview-highlight{color: #45a546; margin-right: 5px}
+ul.hview-boxes li.hview-bold { font-weight: bold}
+
+ul.dwb-boxes li i{
+    color: #366696; margin-right: 5px
+}
+
+ul.dwb-boxes li.dwb-highlight i {
+    color: #45a546;
+    margin-right: 5px;
+}
+
+ul.dwb-boxes li {  /* was .dwb-done, ul.dwb-boxes li.dwb-notdone */
+    display: inline;
+    margin: 1px;
+    line-height: 2.2em;
+}
+ul.dwb-boxes li:hover {
+   cursor: pointer;
+}
+ul.dwb-boxes li.dwb-group-odd {
+/*
+    border-bottom: 5px solid #c1c3c5;
+*/
+    padding: 0px 3px 0px;
+}
+ul.dwb-boxes li.dwb-group-even {
+/*
+    border-bottom: 5px solid #818385;
+*/
+    padding: 0px 3px 0px;
+}
+ul.dwb-boxes li.dwb-group-odd:hover, ul.dwb-boxes li.dwb-group-even:hover {
+/*
+    border-top: 5px solid #00247d;
+*/
+    padding: 6px 3px 0px;
+}
+ul.dwb-boxes li.dwb-highlight img{
+    border-top: 5px solid #c44097;
+    padding: 6px 3px 0px;
+}
+
+/* Journal date icons */
+ul.dwb-dates li i{
+    color: #966636; margin-right: 5px
+}
+
+ul.dwb-dates li {  /* was .dwb-done, ul.dwb-dates li.dwb-notdone */
+    display: inline;
+    margin: 1px;
+    line-height: 2.2em;
+}
+ul.dwb-dates li:hover {
+   cursor: pointer;
+}
+ul.dwb-dates li.dwb-group-odd {
+/*
+    border-bottom: 5px solid #c1c3c5;
+*/
+    padding: 0px 3px 0px;
+}
+ul.dwb-dates li.dwb-group-even {
+/*
+    border-bottom: 5px solid #818385;
+*/
+    padding: 0px 3px 0px;
+}
+ul.dwb-dates li.dwb-group-odd:hover, ul.dwb-dates li.dwb-group-even:hover {
+/*
+    border-top: 5px solid #00247d;
+*/
+    padding: 6px 3px 0px;
+}
+ul.dwb-dates li.dwb-highlight img{
+    border-top: 5px solid #c44097;
+    padding: 6px 3px 0px;
+}
+
+
+/* other */
+div.dwb-response-detail {
+    background: #ffffff;
+    border: 1px solid #c1c3c5;
+    color: #5a5a5a;
+    padding: 5px;
+    margin-top: 1em;  margin-bottom: 1em;
+    width: 98%;
+}
+div.dwb-response-qpart-highlight {
+    background: none #45a546 !important;
+    color: #ffffff;
+}
+div.dwb-response-qpart-highlight a:link, div.dwb-response-qpart-highlight a:visited {
+    color: #ffffff !important;
+}
+div.dwb-response-qpart {
+    background: url([[pix:capdmdwb|bg.block.content]]) repeat-x scroll 0 100% #ffffff;
+    border: 1px solid #c1c3c5;
+    padding: 5px;
+    margin-bottom: 1em;
+    width: 98%;
+}
+div.dwb-response-editlink {
+    background: url([[pix:capdmdwb|icon]]) right center no-repeat;
+    padding: 0.5em 25px 0.5em 0;
+    text-align: right;
+    width:94%;
+}
+.dwb-goto-summary {
+    background: url([[pix:capdmdwb|backtosummary]]) no-repeat scroll left center transparent;
+    padding: 0.5em 0 0.5em 20px;
+    text-align: right;
+    width:94%;
+}
+span.dwb-goto-summary:hover, div.dwb-response-editlink:hover {
+    cursor: pointer;
+}
+
+span.dwb-textarea-icon {
+    background: url([[pix:capdmdwb|icons/textarea_icon]]) no-repeat scroll left center transparent;
+    padding-left: 20px;
+}
+
+span.dwb-textbox-icon {
+    background: url([[pix:capdmdwb|icons/textbox_icon]]) no-repeat scroll left center transparent;
+    padding-left: 20px;
+}
+
+span.dwb-highlight-icon p:first-of-type {
+    background: url([[pix:capdmdwb|icons/highlight_icon]]) no-repeat scroll left center transparent;
+    padding-left: 20px;
+}
+
+span.dwb-checkbox-icon {
+    background: url([[pix:capdmdwb|icons/checkbox_icon]]) no-repeat scroll left center transparent;
+    padding-left: 20px;
+}
+
+span.dwb-radio-icon {
+    background: url([[pix:capdmdwb|icons/radio_icon]]) no-repeat scroll left center transparent;
+    padding-left: 20px;
+}
+span.dwb-select-icon {
+    background: url([[pix:capdmdwb|icons/select_icon]]) no-repeat scroll left center transparent;
+    padding-left: 20px;
+}
+.dwb-hint-icon {
+    background: url([[pix:capdmdwb|icons/icon_hint]]) no-repeat scroll left 8px transparent;
+	padding: 7px 0px 7px 30px;
+	font-size: 1.4em;
+}
+
+.pdfprnicon:before {
+    content: "\f1c1";  /* fa-file-pdf-o */
+    margin-right: 7px;
+    color: #990000;
+    font-family: "FontAwesome";
+}
+
+/* To support Datatable scrolling for the Planner DWB/TOT */
+
+#capdmdwb_student_dwbs_wrapper {
+    overflow-x:scroll;
+}
+
+#capdmdwb_tot_all_wrapper {
+    overflow-x:scroll;
+}
+
+#capdmdwb_tot_one_wrapper {
+    overflow-x:scroll;
+}
+
+#capdmdwb_tot_student_wrapper {
+    overflow-x:scroll;
+}
+
+/* To support page output for the DWB */
+
+/* Set page size and remove front page cover */
+// galgal
+/*
+@page {
+  size: A4;
+}
+
+@page :first {
+  size: A4;
+  margin: 0;
+}
+
+@page :right{
+  @bottom-left {
+    margin: 10pt 0 30pt 0;
+    border-top: .25pt solid #666;
+    content: "Nov 2015";
+    font-size: 9pt;
+    color: #333;
+  }
+
+  @bottom-right {
+    margin: 10pt 0 30pt 0;
+    border-top: .25pt solid #666;
+    content: "Digital Workbook";
+    font-size: 9pt;
+  }
+}
+
+@page :left {
+  @bottom-right {
+    margin: 10pt 0 30pt 0;
+    border-top: .25pt solid #666;
+    content: "Capdm Ltd";
+    font-size: 9pt;
+    color: #333;
+  }
+
+  @bottom-left {
+    margin: 10pt 0 30pt 0;
+    border-top: .25pt solid #666;
+    content: "Page " counter(page) " of " counter(pages);
+    font-size: 9pt;
+  }
+}
+*/
+
+div.dwb-topic {
+  page-break-before: always;
+}
+
+h1, h2, h3, h4, h5 {
+  page-break-after: avoid;
+}
+
+table, figure {
+  page-break-inside: avoid;
+}
+
+/* Reset chapter and figure counters on the body */
+body {
+  counter-reset: page
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  line-height: 1.5;
+  font-size: 11pt;
+}
+
+
+div.dwb-cover {
+  page: cover;
+/*  content: url('pix/dwb.jpg'); */
+  content: url([[pix:capdmdwb|dwb]]);
+  width: 50%;  height: 50%;
+  margin-left: auto; margin-right: auto;
+}
