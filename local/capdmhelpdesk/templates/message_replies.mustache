@@ -1,0 +1,34 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_capdmhelpdesk/message_replies
+
+    This shows the replies to the supplied message ID.
+
+}}
+<div data-region="msgid_{{replyto}}_replies" id="msgid_{{replyto}}_replies" class="messageholder-replies status_{{status}}">
+    {{^replies}}
+        <p class="noreplies">{{# str}}noreplies, local_capdmhelpdesk{{/str}}</p>
+    {{/replies}}
+    {{#replies}}
+    <div class="replier-{{originator}}">
+        <p class="message-reply">{{{ message }}}</p>
+        <span class="reply-date-header"></span>
+        <p><span class="reply-date">{{# str }} replyby, local_capdmhelpdesk, { "replier": {{# quote }}{{fullname}}{{/ quote }}, "replytime": {{# quote }}{{submitdate}}{{/ quote }} }{{/str}}</span></p>
+    </div>
+    {{/replies}}
+</div>

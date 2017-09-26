@@ -1,0 +1,14 @@
+#capdmhelpdesk-new-msg-holder button {
+    margin-top: 1em;
+}
+
+p a.settingslink {
+    margin-top: 1em;
+    float: left;
+}
+
+a.settingslink:before {
+    content: "\f013";  /* fa-cog */
+    padding-right: 1em;
+    font-family: "FontAwesome";
+}

@@ -1,0 +1,170 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_capdmhelpdesk/helpdesk_control
+
+    Example layout of the CAPDM Helpdesk plugin admin view.
+
+    Example context (json):{}
+}}
+
+<div id="capdmhelpdesk-holder" class="container-fluid">
+    <input id="userid" name="userid" type="hidden" value="{{userid}}">
+    <input id="usertype" name="usertype" type="hidden" value="admin">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <div id="capdmhelpdesk-header-holder">
+                <h1>{{#str}}capdmhelpdesknameadmin, local_capdmhelpdesk{{/str}}
+                <span id="add_new_message" class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i id="add_new_message_indicator" class="fa fa-plus fa-stack-1x" title="{{# str }}togglenewform, local_capdmhelpdesk{{/str}}"></i>
+                </span>
+                </h1>
+                <p>{{# str}}introadmin, local_capdmhelpdesk{{/str}}</p>
+
+                <div id="capdmhelpdesk-feedback" class="alert alert-info" style="display: none;">
+                <p>&nbsp;</p>
+                </div>
+            </div>
+
+            <div id="capdmhelpdesk-control-buttons">
+                <button id="reload" class="btn btn-default helpdesk-control-button disable_button" title="{{# str }}reload, local_capdmhelpdesk{{/str}}"><i class="fa fa-repeat"></i></button>
+                <button id="search" class="btn btn-default helpdesk-control-button disable_button" title="{{# str }}searchforamessage, local_capdmhelpdesk{{/str}}"><i class="fa fa-search"></i></button>
+                <button id="toggle_compact" class="btn btn-default toggle  disable_button" title="{{# str}}togglecompact, local_capdmhelpdesk{{/str}}"><i class="fa fa-eye-slash"></i></button>
+                <button id="toggle_categories" class="btn btn-default toggle disable_button" title="{{# str}}togglecatstitle, local_capdmhelpdesk{{/str}}"><i class="fa fa-list-ul"></i></button>
+                <div id="categories_detail" style="display: none;">
+                {{#admincategories}}
+                    <button id="cat_{{id}}" class="btn btn-default toggle disable_button" title="{{# str}}catviewonly, local_capdmhelpdesk{{/str}}">{{fullname}}</button>
+                {{/admincategories}}
+                </div>
+            </div>
+
+            <div id="searchboxholder">
+                <input id="searchbox" name="searchbox" placeholder="{{# str}}searchholdertxt, local_capdmhelpdesk{{/str}}" title="{{# str}}searchtitle, local_capdmhelpdesk{{/str}}" class="form-control" type="text">
+            </div>
+
+            <div id="searchresultsholder">
+                <div data-region="searchresults" id="searchresults" class="searchresults">
+                    {{^success}}
+                        <p class="noreplies">{{# str}}searchnotfound, local_capdmhelpdesk{{/str}}</p>
+                    {{/success}}
+                    {{#success}}
+                        {{^results}}
+                            <p class="noreplies">{{# str}}noreplies, local_capdmhelpdesk{{/str}}</p>
+                        {{/results}}
+                        {{#results}}
+                        <div id="search-msgid_{{id}}" class="search-item">
+                            <p><a href="?msgid={{id}}">({{id}}) - {{ firstname }} {{ lastname }} - {{ subject }}</a><br /><span class="search-item-label">{{# str}}labelsubmitdate, local_capdmhelpdesk{{/str}}</span> {{submitdate}} <span class="search-item-label"><br />{{# str}}labelupdatedate, local_capdmhelpdesk{{/str}}</span> {{updatedate}}</p>
+                        </div>
+                        {{/results}}
+                    {{/success}}
+                </div>
+            </div>
+
+            <div id="key">
+                <button id="show_age_0" class="btn btn-default agestatus_0 helpdesk-control-button"">{{# str}}hrallmessage, local_capdmhelpdesk{{/str}}</button>
+                <button id="show_age_4" class="btn btn-default agestatus_4 helpdesk-control-button"">{{# str}}hr4message, local_capdmhelpdesk{{/str}}</button>
+                <button id="show_age_8" class="btn btn-default agestatus_8 helpdesk-control-button"">{{# str}}hr8message, local_capdmhelpdesk{{/str}}</button>
+                <button id="show_age_12" class="btn btn-default agestatus_12 helpdesk-control-button"">{{# str}}hr12message, local_capdmhelpdesk{{/str}}</button>
+                <button id="show_age_24" class="btn btn-default agestatus_24 helpdesk-control-button"">{{# str}}hr24message, local_capdmhelpdesk{{/str}}</button>
+                <button id="show_age_25" class="btn btn-default agestatus_25 helpdesk-control-button"">{{# str}}hr25message, local_capdmhelpdesk{{/str}}</button>
+            </div>
+            <!-- Message list holder -->
+            <div data-region="capdmhelpdesk-msg-list" id="capdmhelpdesk-msg-list" class="helpdesk-holder">
+                {{^messages}}
+                    <h2 class="light-text">{{# str }}nomessagesyetadmin, local_capdmhelpdesk{{/str}}</h2>
+                {{/messages}}
+                {{#messages}}
+                    <div id="msgid_{{id}}" class="messageholder-main holder_age_{{agestatus}} cat_{{categoryid}} category" title="{{# str }}clicktoview, local_capdmhelpdesk{{/str}}">
+                        <div class="status agestatus_{{agestatus}}">
+                            <div class="message-icons">
+                                <i id="action_collapse_{{id}}" class="fa fa-close closeicon_{{status}} capdmhelpdesk-action-button" style="display: none;"></i>
+                                <i id="action_close_{{id}}" class="fa fa-window-close closestatusicon_{{status}} capdmhelpdesk-action-button" title="{{# str }}closemessagebuttontitle, local_capdmhelpdesk{{/str}}" style="display: none;"></i>
+                            </div>
+                            <div id="msgid_{{id}}_details" class="messagedetails adminview">
+                                <div class="status-holders status">
+                                    <div class="status-item status">
+                                        {{# str }}msgage, local_capdmhelpdesk{{/str}}</span><br /><strong>{{age}}</strong>
+                                    </div>
+                                    <div class="status-item status">
+                                        {{# str }}msgid, local_capdmhelpdesk{{/str}}</span><br /><strong>{{id}}</strong>
+                                    </div>
+                                    <div class="status-item status">
+                                        {{# str }}labelreplies, local_capdmhelpdesk{{/str}}</span><br /><strong>{{replies}}</strong>
+                                    </div>
+                                    <div class="status-item status">
+                                        {{# str }}labelsubmitdate, local_capdmhelpdesk{{/str}}</span><br /><strong>{{# str }} submitdate, local_capdmhelpdesk, { "datesubmitted": {{# quote }}{{submitdate}}{{/ quote }} }{{/str}}</strong>
+                                    </div>
+                                    {{#status}}
+                                    <div class="status-item status">
+                                        <i class="fa fa-window-close-o fa-lg keepshow"></i><br />{{# str}}autocloselabel, local_capdmhelpdesk{{/str}}
+                                    </div>
+                                    {{/status}}
+                                </div>
+                                <div id="messagedetails_{{id}}" class="messagedetails_content">
+                                    <p><span class="label">{{# str }}categorylabel, local_capdmhelpdesk{{/str}}</span>{{category}}</span></p>
+                                    <p><span class="label">{{# str }}labelsubject, local_capdmhelpdesk{{/str}}</span>{{subject}}</p>
+
+                                    {{#updatedate}}
+                                        <p class="updated {{readflag}}"><span class="label">{{# str }}labelupdatedate, local_capdmhelpdesk{{/str}}</span>{{# str }} updatedate, local_capdmhelpdesk, { "dateupdated": {{# quote }}{{updatedate}}{{/ quote }}, "fullname": {{# quote }}{{firstname}} {{lastname}}{{/ quote }} }{{/str}}</p>
+                                    {{/updatedate}}
+                                    {{^updatedate}}
+                                    {{/updatedate}}
+
+                                    <div id="origmessage_{{id}}"  style="display: none;">
+                                        <p><span class="label">{{# str }}labelorigmessage, local_capdmhelpdesk{{/str}}</span></p>
+                                        <div id="origmessage">{{message}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div id="action_reply_{{id}}" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn btn-primary replybutton capdmhelpdesk-action-button" title="{{# str}}openreplybox, local_capdmhelpdesk{{/str}}" style="display: none;">
+                    <i class="fa fa-reply capdmhelpdesk-action-button"></i> {{# str}}openreplybox, local_capdmhelpdesk{{/str}}
+                </div>
+                <div id="reply_message_waiting" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 waitingmessage" style="display: none;">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p><i class="fa fa-spinner fa-pulse fa-4x fa-fw"></i></p>
+                            <h3>{{# str}}sendingnewmessage, local_capdmhelpdesk{{/str}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div id="msgid_{{id}}_reply_holder" class="messageholder-replies" style="display: none;">
+                    <form id="form_reply_message_{{id}}" class="form_validate form_reply_message" action="#" method="post">
+                        <textarea id="reply" name="reply" class="form-control" rows="6" placeholder="Enter your reply here..." type="text"></textarea>
+                        <input id="replyto" name="replyto" type="hidden" value="{{id}}">
+                        <input id="replierid" name="replierid" type="hidden" value="{{userid}}">
+                        <input id="owner" name="owner" type="hidden" value="{{owner}}">
+                        <input id="subject" name="subject" type="hidden" value="{{subject}}">
+                        <input id="notify" name="notify" type="hidden" value="student">
+                        <div id="autoclose-holder">
+                            <input type="checkbox" id="autoclose" name="autoclose" checked value="-1" title="{{# str}}autoclosetitle, local_capdmhelpdesk{{/str}}"><span class="checkboxlabel">{{# str}}autoclose, local_capdmhelpdesk{{/str}}{{{autoclosehelp}}}</span>
+                        </div>
+                        <button id="replyformbuttontitle" class="btn btn-primary" title="{{#str}}replyformbuttontitle, local_capdmhelpdesk{{/str}}">{{# str }}replyformbutton, local_capdmhelpdesk{{/str}}</button>
+
+                    </form>
+                </div>
+                <div data-region="msgid_{{id}}_replies" id="msgid_{{id}}_replies" class="messageholder-replies" style="display: none;">
+                    <div class="waiting"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i><span class="sr-only">{{# str}}loadingreplies, local_capdmhelpdesk{{/str}}</span></div>
+                </div>
+                {{/messages}}
+            </div>
+        </div>
+    </div>
+</div>
